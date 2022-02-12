@@ -18,14 +18,18 @@ class Sentinel2Random(Dataset):
     PyTorch Dataset for the Sentinel-2 Random Split dataset.
 
     Args:
-        root (string): Root directory of dataset where ``sentinel2`` exists.
+        root (string, optional): Root directory of dataset where ``sentinel2`` exists.
+            Defaults to ``data``.
         train (bool, optional): If True, creates dataset from ``sentinel2/train``,
             otherwise from ``sentinel2/test``.
+            Defaults to ``True``.
         download (bool, optional): If true, downloads the dataset from the internet and
             puts it in root directory. If dataset is already downloaded, it is not
             downloaded again.
+            Defaults to ``False```.
         transform (callable, optional): A function/transform that  takes in an PIL image
             and returns a transformed version. E.g, ``transforms.RandomCrop``
+            Defaults to ``None``.
     """
 
     # file locations

@@ -45,6 +45,7 @@ class Sentinel2Random(Dataset):
         image_mode: str = "L",
         transform: FunctionType = None,
         download: bool = False,
+        **kwargs
     ) -> None:
         # labels
         self.train = train
@@ -89,7 +90,7 @@ class Sentinel2Random(Dataset):
 
 
     def __repr__(self) -> str:
-        return f"Sentinel2Random(root={self.root}, train={self.train}, transform={self.transform}, download={self.download})"
+        return f"Sentinel2Random(root='{self.root}', train={self.train}, transform={self.transform}, download={self.download})"
 
     
     # download functions
@@ -173,6 +174,13 @@ if __name__ == '__main__':
         help="Use data set aside for testing (default: False)"
     )
     parser.add_argument(
+        '--verify',
+        dest="verify",
+        default=False,
+        action="store_true",
+        help="Display the first item to visually verify."
+    )
+    parser.add_argument(
         "root",
         metavar="path",
         help="The root path to data storage"
@@ -180,4 +188,8 @@ if __name__ == '__main__':
     kwargs = vars(parser.parse_args())
     dataset = Sentinel2Random(**kwargs)
     print(dataset)
+    if kwargs["verify"]:
+        data = dataset[0]
+        print(data)
+        data["image"].show()
     print("All good to go, good luck!")

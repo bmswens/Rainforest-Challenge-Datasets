@@ -1,6 +1,12 @@
 # Rainforest Challenge Datasets
 This repository contains datasets for working on the [Rainforest Challenge](https://rainforestchallenge.blob.core.windows.net/cvpr/dataset_info.txt).
 
+## Installing
+```bash
+git clone https://github.com/bmswens/Rainforest-Challenge-Datasets.git
+cd Rainforest-Challenge-Datasets
+```
+
 ## Requirements
 Python requirements are documented in [requirements.txt](requirements.txt).
 
@@ -9,11 +15,6 @@ Virtual environments are recommended for install dependencies.
 python3 -m venv venv
 source venv/bin/activate
 pip3 install -r requirements.txt
-```
-
-## Installing
-```bash
-git clone https://github.com/bmswens/Rainforest-Challenge-Datasets.git
 ```
 
 ## Usage

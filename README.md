@@ -61,9 +61,10 @@ from datasets.Sentinel2Random import Sentinel2Random
 dataset = Sentinel2Random('data', download=True)
 ```
 
-### Notes
+## Notes
 Completed:
 - Sentinel2Random
+- Sentinel2RandomZipped
 
 Planned:
 - Sentinel1Random
@@ -74,5 +75,14 @@ Planned:
 - Landsat8Random
 - Landsat8Geo
 
-### Contributors
+---
+**Normal vs `Zipped` datasets**
+
+The `Sentinel2RandomZipped` dataset has been provided as a proof-of-concept for filesystems that are limited in storage.
+
+This implementation of the `Dataset` class saves storage space on the device, at the cost of drastically longer access time per file.
+
+---
+
+## Contributors
 - [Brandon Swenson](https://github.com/bmswens) - Author

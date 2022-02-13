@@ -80,6 +80,8 @@ class Sentinel2Random(Dataset):
         file_name = self.images[index]
         full_path = os.path.join(self.tgt, file_name)
         img = Image.open(full_path).convert(self.image_mode)
+        if self.transform:
+            img = self.transform(img)
         tensor = toTensor(img)
         output = {
             "tensor": tensor,
@@ -140,7 +142,7 @@ class Sentinel2Random(Dataset):
 
         # download zip file to root
         print("Downloading files.")
-        zip_path = os.path.join(self.root, "sentinel2.zip")
+        zip_path = os.path.join(self.root, f"sentinel2-{self.label}.zip")
         response = requests.get(self.tgt_url, stream=True)
         with open(zip_path, 'wb') as output:
             for chunk in response.iter_content(chunk_size=128):

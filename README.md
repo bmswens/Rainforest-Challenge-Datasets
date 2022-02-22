@@ -1,5 +1,5 @@
 # Rainforest Challenge Datasets
-This repository contains datasets for working on the [Rainforest Challenge](https://rainforestchallenge.blob.core.windows.net/cvpr/dataset_info.txt).
+This repository contains datasets for working on the [Rainforest Challenge](https://sites.google.com/view/rainforest-challenge).
 
 ## Installing
 ```bash
@@ -65,11 +65,11 @@ dataset = Sentinel2Random('data', download=True)
 Completed:
 - Sentinel2Random
 - Sentinel2RandomZipped
+- Sentinel2Geo
 
 Planned:
 - Sentinel1Random
 - Sentinel1Geo
-- Sentinel2Geo
 - Landsat5Random
 - Landsat5Geo
 - Landsat8Random

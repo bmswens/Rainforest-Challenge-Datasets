@@ -13,7 +13,7 @@ from torchvision.transforms import ToTensor
 
 toTensor = ToTensor()
 
-class Sentinel2Random(Dataset):
+class Sentinel2Geo(Dataset):
     """
     PyTorch Dataset for the Sentinel-2 Random Split dataset.
 
@@ -35,10 +35,10 @@ class Sentinel2Random(Dataset):
     # file locations
     meta_url = "https://rainforestchallenge.blob.core.windows.net/cvpr/dataset_info.txt"
 
-    train_url = "https://rainforestchallenge.blob.core.windows.net/cvpr/random_split/train/sent2.zip"
-    test_url = "https://rainforestchallenge.blob.core.windows.net/cvpr/random_split/test/sent2.zip"
+    train_url = "https://rainforestchallenge.blob.core.windows.net/cvpr/geographical_split/train/sent2.zip"
+    test_url = "https://rainforestchallenge.blob.core.windows.net/cvpr/geographical_split/test/sent2.zip"
 
-    dataset_name = "sentinel2random"
+    dataset_name = "sentinel2geo"
 
     def __init__(
         self,
@@ -97,7 +97,7 @@ class Sentinel2Random(Dataset):
 
 
     def __repr__(self) -> str:
-        return f"Sentinel2Random(root='{self.root}', train={self.train}, transform={self.transform}, download={self.download})"
+        return f"Sentinel2Geo(root='{self.root}', train={self.train}, transform={self.transform}, download={self.download})"
 
     
     # download functions
@@ -105,7 +105,7 @@ class Sentinel2Random(Dataset):
         in_random_split = False
         response = requests.get(self.meta_url)
         for line in response.text.split('\n'):
-            if "Random split (#" in line:
+            if "Geographical split (#" in line:
                 in_random_split = True
             elif in_random_split and "Sentinel-2" in line:
                 line = line.replace("Sentinel-2:", "").replace('\t', '').replace(',', '')
@@ -191,7 +191,7 @@ if __name__ == '__main__':
         help="The root path to data storage"
     )
     kwargs = vars(parser.parse_args())
-    dataset = Sentinel2Random(**kwargs)
+    dataset = Sentinel2Geo(**kwargs)
     print(dataset)
     if kwargs["verify"]:
         data = dataset[0]
